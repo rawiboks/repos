@@ -1,0 +1,62 @@
+﻿form{
+    background-color:#d3c7c7;
+    width:45%;
+    height:400px;
+    margin:92px 20px 0px 32.5%;
+}
+
+h1 {
+    padding-top:20px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 2em;
+}
+
+
+label {
+    display: block;
+    float: left;
+    margin: 12px 45% 0 33%;
+    padding: 30px 0 25px 70px;
+    width: 10%;
+    font-size: 1.15em;
+}
+
+input {
+    margin: 0px 0% 0 33%;
+    padding: 0px 0 0px 70px;
+    width: 25%;
+    font-size: 1.15em;
+    background-color:#d7ddff;
+    text-align:left;
+}
+
+button {
+    margin: 35px 0 0 36%;
+    font-size: 1.65em;
+}
+
+#test {
+    padding: 8px 57px;
+    /*border:none;*/
+    border: solid;
+    border-radius: 10%;
+    background-color: #8a98ed;
+    border-color: #fff;
+}
+
+
+
+#lbl-name, #lbl-password {
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: left;
+}
+
+#lbl-name {
+    background-image: url("../Images/login.png");
+}
+
+#lbl-password{
+    background-image:url("../Images/password.jpg");
+}
