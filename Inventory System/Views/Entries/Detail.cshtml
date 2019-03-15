@@ -1,0 +1,39 @@
+﻿@model Inventory_System.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <img src="@Url.Content(Model.Picture)" alt="product_Pic" class="img-responsive" />
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">@Model.Name</div>
+    <div class="col">@Model.Bardcode</div>
+    <div class="col">@Model.DateCreated.ToString("dd/MM/yyyy")</div>
+    <div class="col"></div>
+</div>
+
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <table class="table table-stripped table-dark">
+            <tr>
+                <th>Transaction</th>
+                <th>In/Out</th>
+                <th>Quantity</th>
+                <th>Date</th>
+            </tr>
+        </table>
+    </div>
+    <div class="col"></div>
+</div>
+
+

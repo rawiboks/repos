@@ -1,0 +1,78 @@
+﻿@model List<Inventory_System.Models.Manufacturer>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+        <div class="container">
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name" class="control-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="manufacturer" class="control-label">Manufacturer</label>
+                        <select class="form-control" id="manufacturer" name="manufacturer">
+                            @foreach (var manufacturer in Model)
+                            {
+                                <option value="@manufacturer.Id">@manufacturer.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label for="name" class="control-label">Name</label>
+                        <a href="@Url.Action("Add", "Entries")"
+                           class="btn btn-info margin-right ">
+                            <span class="glyphicon glyphicon-plus"></span> Add
+                        </a>
+                        @*<button type="button" class="btn btn-primary">Add Manufacaturer</button>*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="barcode" class="control-label">Barcode #</label>
+                        <input type="text" id="barcode" name="barcode" class="form-control"/>
+                    </div>
+                </div>
+             </div>
+
+
+            <div class="form-row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="selectImage" class="control-label">Select Image</label>
+                        <input type="file" id="selectImage" name="selectImage" class="form-control-file" />
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="form-group row">
+                <label for="lock" class="col-1 col-form-label">Lock</label>
+                <div class="col-1">
+                    <input type="checkbox" id="lock" name="lock" class="form-check" />
+                </div>
+            </div>*@
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="locked" class="col-form-label">Lock</label>
+                    <input type="checkbox" id="locked" name="locked" class="form-check" />
+                </div>
+            </div>
+
+            </div>
+}
