@@ -17,6 +17,7 @@
             imagePath = @"/Images/" + newFileName;
 
             photo.Save(@"~\" + imagePath);
+            Model.Picture = imagePath;
         }
     }
 }
@@ -70,7 +71,7 @@
         </div>
 
         <div class="form-row">
-            @Html.TextBoxFor(m=>m.Picture, new { @Value =imagePath})
+            @Html.TextBoxFor(m=>m.Picture, new { @Value =imagePath, @class="hidden"})
         </div>
 
 @*****Lock checkbox******@

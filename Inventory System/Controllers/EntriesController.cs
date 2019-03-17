@@ -38,19 +38,20 @@ namespace Inventory_System.Controllers
 
         public ActionResult Add()
         {
-            var product = new Product()
-            {
-                Name="TestName"
-            };
-
             ViewBag.ManufacturersSelectListItems = new SelectList(
                 Data.Data.Manufacturers, "Id", "Name");
-            return View(product);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Add(Product product)
         {
+            if (ModelState.IsValid && product.Picture != null)
+            {
+                _productsRepository.AddProduct(product);
+                return Redirect("Index");
+            }
+
             ViewBag.ManufacturersSelectListItems = new SelectList(
                 Data.Data.Manufacturers, "Id", "Name");
 

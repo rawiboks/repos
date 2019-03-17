@@ -17,5 +17,16 @@ namespace Inventory_System.Data
         {
             return Data.Products.Where(p => p.Id == Id).SingleOrDefault();
         }
+
+        public void AddProduct(Product product)
+        {
+            int count = Data.Products.Max(i => i.Id) +1;
+            product.Id = count;
+            product.Manufacturer = Data.Manufacturers.Where(m => m.Id == product.ManufacturerId).SingleOrDefault();
+            product.DateCreated = DateTime.Now;
+
+            Data.Products.Add(product);
+
+        }
     }
 }
