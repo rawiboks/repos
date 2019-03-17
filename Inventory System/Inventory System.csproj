@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\testClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +119,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Entries\Detail.cshtml" />
     <Content Include="Views\Entries\Add.cshtml" />
+    <Content Include="Views\Entries\testPage.cshtml" />
+    <Content Include="Views\Entries\testIPage2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 
 namespace Inventory_System.Models
 {
@@ -10,6 +11,7 @@ namespace Inventory_System.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Manufacturer Manufacturer { get; set; }
+        public int ManufacturerId { get; set; }
         public string Bardcode { get; set; }
         public DateTime DateCreated { get; set; }
         public string Picture { get; set; }
@@ -25,6 +27,11 @@ namespace Inventory_System.Models
             DateCreated = dateCreated;
             Picture = picture;
             Locked = locked;
+        }
+
+        public Product()
+        {
+
         }
     }
 }

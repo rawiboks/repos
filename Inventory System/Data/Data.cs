@@ -24,7 +24,8 @@ namespace Inventory_System.Data
                 new Manufacturer(1, "Nestle", "LosAngeles, California"),
                 new Manufacturer(2, "Mondalez", "London, UK"),
                 new Manufacturer(3, "P&G", "Swindon, UK"),
-                new Manufacturer(4, "Pepsi", "San Antonio, California")
+                new Manufacturer(4, "Pepsi", "San Antonio, California"),
+                new Manufacturer(5, "TEst Manu", "San Antonio, California")
             };
 
             var products = new List<Product>()
