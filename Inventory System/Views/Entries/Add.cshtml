@@ -21,104 +21,84 @@
     }
 }
 
-@using (Html.BeginForm())
-{
-<div class="container">
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="container">
 
-    <div class="form-row">
-        <div class="col-md-6">
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        @Html.LabelFor(m => m.Manufacturer, new { @class = "control-label" })
+        <div class="form-row">
+            <div class="col-5">
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.ManufacturerId,
+                                            (SelectList)ViewBag.ManufacturersSelectListItems, "",
+                                            new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="pad-bottom">
+                    <button type="button" class="btn btn-info btn-block">
+                        <span class="glyphicon glyphicon-plus"></span> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bardcode, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Bardcode, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+
+@*****Upload Image******@
+        <div class="form-row">
+            <div class="col-6">
+                <label for="image">Image</label>
+                <input type="file" name="image" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            @Html.TextBoxFor(m=>m.Picture, new { @Value =imagePath})
+        </div>
+
+@*****Lock checkbox******@
+        <div class="form-row">
             <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.Locked)
+                        @Html.DisplayNameFor(m => m.Locked)
+                    </label>
+                </div>
+
             </div>
         </div>
+
+@****Submit and Cancle buttons*****@
+        <div class="form-row">
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-save"></span> Confirm
+            </button>
+
+            @*</div>
+                <div class="form-row">*@
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-save"></span> Cancle
+            </button>
+        </div>
+
     </div>
-
-    @Html.LabelFor(m => m.Manufacturer, new { @class = "control-label" })
-    <div class="form-row">
-        <div class="col-5">
-            <div class="form-group">
-                @Html.DropDownListFor(m => m.ManufacturerId,
-                              (SelectList)ViewBag.ManufacturersSelectListItems, "",
-                              new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="col-1">
-            <div class="pad-bottom">
-                <button type="button" class="btn btn-info btn-block">
-                    <span class="glyphicon glyphicon-plus"></span> Add
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col-6">
-            <div class="form-group">
-                @Html.LabelFor(m => m.Bardcode, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Bardcode, new { @class = "form-control" })
-            </div>
-        </div>
-    </div>
-
-
-    @*<div class="form-row">
-        <div class="col-6">
-            <div class="form-group">
-                <label for="picture" class="control-label">Select Image</label>
-                <input type="file" id="picture" name="picture" class="form-control-file"
-                       value="@ViewBag.Picture" />
-            </div>
-        </div>
-    </div>*@
-
-    <div class="form-row">
-        <div class="col-6">
-            <label for="image">Image</label>
-            <input type="file" name="image" />
-            <br />
-            @*<input type="button"
-                   value=@WebImage.GetImageFromRequest()
-                   onclick="location.href="@Url.Action("Index")" />*@
-
-                   @*<input type="image" value="Upload" />*@
-        </div>
-    </div>
-
-    <h1>Uploaded Image</h1>
-
-    @if (imagePath != "")
-    {
-        <img src=@("/Images/chocapic2.jpg") />
-        <div class="result">
-            <img src="@imagePath" alt="image" />
-        </div>
     }
-
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    @Html.CheckBoxFor(m => m.Locked)
-                    @Html.DisplayNameFor(m => m.Locked)
-                </label>
-            </div>
-
-        </div>
-    </div>
-
-    @****Submit and Cancle buttons*****@
-    <div class="form-row">
-        <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span> Confirm
-        </button>
-
-        @*</div>
-            <div class="form-row">*@
-        <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span> Cancle
-        </button>
-    </div>
-
-</div>
-}
+</form>
