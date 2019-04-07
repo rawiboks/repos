@@ -10,7 +10,7 @@
     if (IsPost)
     {
         photo = WebImage.GetImageFromRequest();
-        if (photo!=null)
+        if (photo != null)
         {
             newFileName = Guid.NewGuid().ToString() + " " +
                 Path.GetFileName(photo.FileName);
@@ -39,67 +39,93 @@
             <div class="col-5">
                 <div class="form-group">
                     @Html.DropDownListFor(m => m.ManufacturerId,
-                                            (SelectList)ViewBag.ManufacturersSelectListItems, "",
-                                            new { @class = "form-control" })
+                               (SelectList)ViewBag.ManufacturersSelectListItems, "",
+                               new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-1">
-                <div class="pad-bottom">
-                    <button type="button" class="btn btn-info btn-block">
-                        <span class="glyphicon glyphicon-plus"></span> Add
-                    </button>
-                </div>
+                @*<div class="pad-bottom">*@
+                <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#demo">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                </button>
+
+                @*</div>*@
             </div>
         </div>
 
-        <div class="form-row">
-            <div class="col-6">
+        <div id="demo" class="collapse bg-info">
+            <div class="form-group ">
+                <div class="form-row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <h5>Create new manufacturer</h5>
+                    </div>
+                    @*<div class="col-9"></div>*@
+                </div>
+            </div>
+
+            <div class="form-row col-6">
+                @Html.Label("ManuName", new { @class="control-label"})
+                @Html.TextBox("ManuName", null, new { @class="form-control"})
+            </div>
+
+            <div class="form-row col-6">
+                @Html.Label("address", new { @class="control-label"})
+                @Html.TextBox("address", null, new { @class="form-control"})
+            </div>
+
+            <div class="form-row col-12">
+                <input type="submit" formaction=@Url.Action("AddManufacturer") formmethod="post" />
+            </div>
+        </div>
+
+            <div class="form-row">
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Bardcode, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Bardcode, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+
+            @*****Upload Image******@
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                @Html.TextBoxFor(m => m.Picture, new { @Value = imagePath, @class = "hidden" })
+            </div>
+
+            @*****Lock checkbox******@
+            <div class="form-row">
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Bardcode, new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Bardcode, new { @class = "form-control" })
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Locked)
+                            @Html.DisplayNameFor(m => m.Locked)
+                        </label>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
+            @****Submit and Cancle buttons*****@
+            <div class="form-row">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-save"></span> Confirm
+                </button>
 
-@*****Upload Image******@
-        <div class="form-row">
-            <div class="col-6">
-                <label for="image">Image</label>
-                <input type="file" name="image" />
+                @*</div>
+            <div class="form-row">*@
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-save"></span> Cancle
+                </button>
             </div>
+
         </div>
-
-        <div class="form-row">
-            @Html.TextBoxFor(m=>m.Picture, new { @Value =imagePath, @class="hidden"})
-        </div>
-
-@*****Lock checkbox******@
-        <div class="form-row">
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBoxFor(m => m.Locked)
-                        @Html.DisplayNameFor(m => m.Locked)
-                    </label>
-                </div>
-
-            </div>
-        </div>
-
-@****Submit and Cancle buttons*****@
-        <div class="form-row">
-            <button type="submit" class="btn btn-success">
-                <span class="glyphicon glyphicon-save"></span> Confirm
-            </button>
-
-            @*</div>
-                <div class="form-row">*@
-            <button type="submit" class="btn btn-success">
-                <span class="glyphicon glyphicon-save"></span> Cancle
-            </button>
-        </div>
-
-    </div>
-    }
 </form>

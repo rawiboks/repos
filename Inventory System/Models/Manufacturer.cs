@@ -17,5 +17,10 @@ namespace Inventory_System.Models
             Name = name;
             Address = address;
         }
+
+        public Manufacturer()
+        {
+
+        }
     }
 }

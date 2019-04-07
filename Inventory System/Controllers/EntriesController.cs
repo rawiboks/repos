@@ -12,12 +12,14 @@ namespace Inventory_System.Controllers
     public class EntriesController : Controller
     {
         private ProductsRepository _productsRepository = null;
-        //private ManufacturerRepository _manufacturerRepository = null;
+        private ManufacturerRepository _manufacturerRepository = null;
+        private TransactionRepository _transactionsRepostiory=null;
 
         public EntriesController()
         {
             _productsRepository = new ProductsRepository();
-            //_manufacturerRepository = new ManufacturerRepository();
+            _manufacturerRepository = new ManufacturerRepository();
+            _transactionsRepostiory = new TransactionRepository();
         }
         
         // GET: Entries
@@ -33,7 +35,32 @@ namespace Inventory_System.Controllers
                 return HttpNotFound();
             }
             var productDetail = _productsRepository.GetProduct(id.Value);
+            var transactions = _transactionsRepostiory.GetProductTransactions(id.Value);
+            ViewBag.Transactions = transactions;
+            ViewBag.Balance = transactions.Sum(t => t.Quantity);
             return View(productDetail);
+        }
+
+        [HttpPost]
+        public ActionResult AddTransaction(int id, int quantity)
+        {
+            if ((ModelState.IsValid && quantity != 0))
+            {
+                _transactionsRepostiory.AddTransaction(id, quantity);
+            }
+
+            return RedirectToAction("Detail", new { id = id });
+        }
+
+        [HttpPost]
+        public ActionResult Detail(int? id, int searchMin, int searchMax)
+        {
+            var productDetail = _productsRepository.GetProduct(id.Value);
+            var transactions = _transactionsRepostiory.SearchTransactions(id.Value, searchMin, searchMax);
+            ViewBag.Transactions = transactions;
+            ViewBag.Balance = transactions.Sum(t => t.Quantity);
+            return View(productDetail);
+            //return RedirectToAction("Detail", new { id = id });
         }
 
         public ActionResult Add()
@@ -58,21 +85,12 @@ namespace Inventory_System.Controllers
             return View(product);
         }
 
-
-        public ActionResult testPage()
+        [HttpPost]
+        public ActionResult AddManufacturer(string ManuName, string address)
         {
-            return View(); 
-        }
+            _manufacturerRepository.AddManufacturer(ManuName, address);
 
-        [ActionName("testPage"), HttpPost]
-        public ActionResult testPagee(testClass x)
-        {
-            return View(x);
-        }
-
-        public ActionResult testIPage2()
-        {
-            return View();
+            return Redirect("Add");
         }
     }
 }

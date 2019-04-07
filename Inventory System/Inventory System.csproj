@@ -104,12 +104,14 @@
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\ManufacturerRepository.cs" />
     <Compile Include="Data\ProductsRepository.cs" />
+    <Compile Include="Data\TransactionRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\testClass.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

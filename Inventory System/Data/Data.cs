@@ -10,6 +10,7 @@ namespace Inventory_System.Data
     {
         public static List<Manufacturer> Manufacturers { get; set; }
         public static List<Product> Products { get; set; }
+        public static List<Transaction> Transactions { get; set; }
 
         static Data()
         {
@@ -36,8 +37,17 @@ namespace Inventory_System.Data
                 new Product(4, "Lipton Tea 100bags", manufacturers[2], "#0004", DateTime.Parse("20/01/2010"), "~/Images/lipton 100bags.jpg", false )
             };
 
+            var transactions = new List<Transaction>()
+            {
+                new Transaction(1,products[0], 200, DateTime.Parse("21/03/2018")),
+                new Transaction(2,products[0], -100, DateTime.Parse("20/03/2018")),
+                new Transaction(3,products[0], 100, DateTime.Parse("25/10/2018")),
+                new Transaction(4,products[0], -50, DateTime.Parse("01/02/2019"))
+            };
+
             Manufacturers = manufacturers;
             Products = products;
+            Transactions = transactions;
         }
     }
 }
