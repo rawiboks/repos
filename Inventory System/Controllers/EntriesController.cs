@@ -2,6 +2,7 @@
 using Inventory_System.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
@@ -14,6 +15,7 @@ namespace Inventory_System.Controllers
         private ProductsRepository _productsRepository = null;
         private ManufacturerRepository _manufacturerRepository = null;
         private TransactionRepository _transactionsRepostiory=null;
+        Context context = new Context();
 
         public EntriesController()
         {
@@ -66,15 +68,25 @@ namespace Inventory_System.Controllers
         public ActionResult Add()
         {
             ViewBag.ManufacturersSelectListItems = new SelectList(
-                Data.Data.Manufacturers, "Id", "Name");
+                context.Manufacturer, "Id", "ManufacturerName");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(Product product)
+        public ActionResult Add(Product product, HttpPostedFileBase picture)
         {
-            if (ModelState.IsValid && product.Picture != null)
+            if (ModelState.IsValid) /*&& product.Picture != null)*/
             {
+                string newFileName = "";
+                string imagePath = "";
+
+                newFileName = Guid.NewGuid().ToString() + " " 
+                    + Path.GetFileName(picture.FileName);
+                newFileName = Path.GetFileName(picture.FileName);
+                imagePath = Path.Combine(Server.MapPath("~/Images/"), newFileName);
+                picture.SaveAs(imagePath);
+
+                product.Picture = "~/Images/" + newFileName;
                 _productsRepository.AddProduct(product);
                 return Redirect("Index");
             }
@@ -86,9 +98,9 @@ namespace Inventory_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddManufacturer(string ManuName, string address)
+        public ActionResult AddManufacturer(Manufacturer manufacturer)
         {
-            _manufacturerRepository.AddManufacturer(ManuName, address);
+            _manufacturerRepository.AddManufacturer(manufacturer);
 
             return Redirect("Add");
         }

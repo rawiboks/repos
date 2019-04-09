@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
@@ -15,6 +16,8 @@ namespace Inventory_System.Models
         public string Bardcode { get; set; }
         public DateTime DateCreated { get; set; }
         public string Picture { get; set; }
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
         public bool Locked { get; set; }
 
         public Product(int id, string name, Manufacturer manufacturer, 

@@ -8,20 +8,23 @@ namespace Inventory_System.Data
 {
     public class ManufacturerRepository
     {
+        Context context = new Context();
+
         public List<Manufacturer> GetManufacturers()
         {
-            var manufacturers = Data.Manufacturers;
-            return manufacturers;
+            //var manufacturers = Data.Manufacturers;
+            //return manufacturers;
+
+            //Context context = new Context();
+            return context.Manufacturer.ToList();
         }
 
-        public void AddManufacturer(string name, string Address)
+        public void AddManufacturer(Manufacturer manufacturer)
         {
-            Manufacturer manufacturer = new Manufacturer();
-            manufacturer.Id = Data.Manufacturers.Max(m => m.Id)+1;
-            manufacturer.Name = name;
-            manufacturer.Address = Address;
-
-            Data.Manufacturers.Add(manufacturer);
+            manufacturer.Id = context.Manufacturer.Max(m => m.Id)+1;
+            context.Manufacturer.Add(manufacturer);
+            context.SaveChanges();
+            //Data.Manufacturers.Add(manufacturer);
         }
     }
 }
