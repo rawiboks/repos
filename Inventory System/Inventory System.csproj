@@ -102,6 +102,11 @@
     <Content Include="Images\lipton 100bags.jpg" />
     <Content Include="Images\pepsi 0.3.jpg" />
     <Content Include="Images\pepsi.jpg" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +114,7 @@
     <Compile Include="Controllers\EntriesController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\Data.cs" />
+    <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\ManufacturerRepository.cs" />
     <Compile Include="Data\ProductsRepository.cs" />
     <Compile Include="Data\TransactionRepository.cs" />
@@ -118,7 +124,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\testClass.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +138,8 @@
     <Content Include="Views\Entries\Add.cshtml" />
     <Content Include="Views\Entries\testPage.cshtml" />
     <Content Include="Views\Entries\testIPage2.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

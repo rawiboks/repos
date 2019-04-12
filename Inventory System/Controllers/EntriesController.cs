@@ -30,6 +30,12 @@ namespace Inventory_System.Controllers
             return View(_productsRepository.GetProducts());
         }
 
+        [HttpPost]
+        public ActionResult Index(string search)
+        {
+            return View(_productsRepository.searchProduct(search));
+        }
+
         public ActionResult Detail(int? id)
         {
             if (id == null)
@@ -75,7 +81,7 @@ namespace Inventory_System.Controllers
         [HttpPost]
         public ActionResult Add(Product product, HttpPostedFileBase picture)
         {
-            if (ModelState.IsValid) /*&& product.Picture != null)*/
+            if (ModelState.IsValid && picture!=null) /*&& product.Picture != null)*/
             {
                 string newFileName = "";
                 string imagePath = "";
@@ -92,7 +98,7 @@ namespace Inventory_System.Controllers
             }
 
             ViewBag.ManufacturersSelectListItems = new SelectList(
-                Data.Data.Manufacturers, "Id", "Name");
+                Data.Data.Manufacturers, "Id", "ManufacturerName");
 
             return View(product);
         }

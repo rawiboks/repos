@@ -11,7 +11,11 @@ namespace Inventory_System.Data
     {
         public Context() : base("Inventory_System")
         {
-            if (!Database.Exists("Inventory_System"))
+            Database.SetInitializer<Context>
+                (new DropCreateDatabaseIfModelChanges<Context>());
+            var test = this.Product.FirstOrDefault();
+
+            if (this.Product.FirstOrDefault()==null) //!Database.Exists("Inventory_System"))
             {
                 Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
 

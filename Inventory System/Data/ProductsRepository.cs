@@ -23,6 +23,11 @@ namespace Inventory_System.Data
             //return Data.Products.Where(p => p.Id == Id).SingleOrDefault();
         }
 
+        public List<Product> searchProduct(string search)
+        {
+            return context.Product.Where(p => p.Name.Contains(search)).ToList();
+        }
+
         public void AddProduct(Product product)
         {
             //var context = new Context();

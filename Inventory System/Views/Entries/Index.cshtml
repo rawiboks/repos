@@ -4,9 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form>
-    <div class="row">
+@using (Html.BeginForm())
+{
+    @*<div class="row">
         <div class="col-md-12">
+            <a href="@Url.Action("Add", "Entries")"
+               class="btn btn-info btn-lg margin-right  margin-top" style="float:right">
+                <span class="glyphicon glyphicon-plus"></span> Add Entry
+            </a>
+            <a href="@Url.Action("Add", "Entries")"
+               class="btn btn-warning btn-lg margin-right margin-top" style="float:right">
+                <span class="glyphicon glyphicon-plus"></span> Remove
+            </a>
+        </div>
+    </div>*@
+
+    <div class="container"></div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Search" />
+                @*<input type="submit" id="submit" name="submit" class="form-control" />*@
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </div>
+        <div class="col-md-4">
             <a href="@Url.Action("Add", "Entries")"
                class="btn btn-info btn-lg margin-right  margin-top" style="float:right">
                 <span class="glyphicon glyphicon-plus"></span> Add Entry
@@ -18,16 +41,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <input type="text" id="Name" name="Name" class="form-control" placeholder="Search" />
-            </div>
-        </div>
-        <div class="col-md-4"></div>
-
-
+    <div class="form-row">
         @foreach (var product in Model)
         {
             <div class="col-md-4">
@@ -39,4 +53,4 @@
             </div>
         }
     </div>
-</form>
+}
