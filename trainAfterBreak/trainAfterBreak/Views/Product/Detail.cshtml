@@ -1,0 +1,77 @@
+﻿@model trainAfterBreak.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form>
+    <div class="container bg-primary">
+
+        <div class="row">
+            <div class="col">
+                <img src='@Url.Content(Model.Picture)' alt='@Model.Name' />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col md-3"></div>
+            <div class="col md-3">
+                <table class="table table-warning">
+                    <tr>
+                        <th>@Model.Name</th>
+                        <th>Barcode: @Model.Barcode</th>
+                        <th>Created: @Model.DateCreated.ToString("dd/MM/yyyy")</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col md-3"></div>
+        </div>
+
+        <div class="form-row col-md-6">
+            <div class="form-group">
+                @Html.Label("Quantity")
+                @Html.TextBox("Quantity")
+                <button type="button">Submit</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col md-3"></div>
+            <div class="col md-3">
+
+                
+
+                <kbd>Current Balance: @ViewBag.Balance</kbd>
+
+                <table class="table table-striped">
+                    <tr class="table-info">
+                        <th>Date</th>
+                        <th>In/Out</th>
+                        <th>Quantity</th>
+                    </tr>
+                    @foreach (var transaction in ViewBag.transactions)
+                    {
+                        <tr>
+                            <th>@transaction.TransactionDate.ToString("dd/MM/yyyy")</th>
+                            <th>
+                                @if (transaction.Quantity > 0)
+                                {
+                                    <div>In</div>
+                                }
+                                else
+                                {
+                                    <div>Out</div>
+                                }
+                            </th>
+                            <th>@transaction.Quantity</th>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="col md-3"></div>
+        </div>
+
+    </div>
+</form>
+
+

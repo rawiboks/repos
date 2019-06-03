@@ -1,0 +1,122 @@
+﻿@model trainAfterBreak.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Add", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @************************@
+    @**********Name**********@
+    @************************@
+    <div class="container">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    @************************@
+    @******Manufacturer******@
+    @************************@
+    <div class="container">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.Label("Manufacturer")
+                @Html.DropDownList("ManufacturerId",
+                            (SelectList)ViewBag.Manufacturerist, "",
+                                 new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <button class="btn btn-info"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#add-manufacturer"
+                    aria-expanded="false"
+                    aria-controls="add-manufacturer">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add
+            </button>
+        </div>
+    </div>
+
+    @************************@
+    @*****Add Manufacturer******@
+    @************************@
+    <div class="container">
+        <div class="collapse bg-info" id="add-manufacturer">
+            <div class="form-row col-6 text-warning @*float-right*@">
+                <h4 display:"block">Add Manufacturer</h4>
+            </div>
+
+            <div class="col-6 form-group">
+                @Html.Label("manufacturerName", "Manufacturer Name", new { @class = "control-label" })
+                @Html.TextBox("manufacturerName", null, new { @class = "form-control" })
+            </div>
+
+            <div class="col-6 form-group">
+                @Html.Label("Address", new { @class = "control-label" })
+                @Html.TextBox("Address", null, new { @class = "form-control" })
+            </div>
+
+            <div class="form-row col-6">
+                <button type="submit" class="btn btn-success" formaction=@Url.Action("AddManufacturer")>
+                    <span class="glyphicon glyphicon-ok"></span>
+                    Add Manufacturer
+                </button>
+            </div>
+
+            <div class="form-row col-6"><p></p></div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Barcode, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Barcode, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    @************************@
+    @*****Upload Image******@
+    @************************@
+    <div class="container">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label for="picture">Select Image</label>
+                <input type="file" id="picture" name="picture" />
+
+            </div>
+        </div>
+    </div>
+
+    @************************@
+    @****Submit and Cancle buttons*****@
+    @************************@
+    <div class="container">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok"></span> Confirm
+                </button>
+
+                <button type="submit" class="btn btn-danger" formaction=@Url.Action("Index")>
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Cancle
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+}

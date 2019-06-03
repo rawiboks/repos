@@ -1,0 +1,40 @@
+﻿@model List<trainAfterBreak.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <input type="text" placeholder="Search..." />
+        </div>
+        <div class="col-4">
+
+            <a href="@Url.Action("Add", "Product")"
+                class="btn btn-success margin-right" style="float:right">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+            </a>
+
+            <button type="button" class="btn btn-danger margin-right" style="float:right">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </div>
+    </div>
+    
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-3">
+                <a href='@Url.Action("Detail", "Product", new { id = product.Id })'>
+                    <img src='@Url.Content(product.Picture)' />
+                @Html.ActionLink(product.Name, "Detail")
+                </a>
+            </div>
+        }
+    </div>
+}
+
+

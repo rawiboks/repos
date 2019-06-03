@@ -1,0 +1,40 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(@*new { @class = "vertical-align:middle" }*@))
+{
+    <div class="container col-md-3 center" id="main-sub">
+                <input type="text" name="total" value="@ViewBag.total" />
+                <input type="text" value="@ViewBag.total2" />
+
+        <table class="table test">
+            <tr>
+                <th><input type="submit" name="btn" value="1" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="2" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="3" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="*" class="btn btn-primary" /></th>
+            </tr>
+            <tr>
+                <th><input type="submit" name="btn" value="4" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="5" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="6" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="-" class="btn btn-primary" /></th>
+            </tr>
+            <tr>
+                <th><input type="submit" name="btn" value="7" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="8" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="9" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="+" class="btn btn-primary" /></th>
+            </tr>
+            <tr>
+                <th><input type="submit" name="btn" value="/" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="0" class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="." class="btn btn-primary" /></th>
+                <th><input type="submit" name="btn" value="=" class="btn btn-primary" /></th>
+            </tr>
+        </table>
+    </div>
+}
